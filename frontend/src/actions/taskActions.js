@@ -12,6 +12,7 @@ import {
   DELETE_TASK_SUCCESS,
   DELETE_TASK_FAIL,
 } from "../constants/taskConstants";
+import { baseURL } from "../utils/getBaseUrl";
 
 export const loadTask = () => async (dispatch) => {
   try {
@@ -21,7 +22,7 @@ export const loadTask = () => async (dispatch) => {
 
     console.log(token);
 
-    await fetch("http://localhost:4300/api/task", {
+    await fetch(`${baseURL}/api/task`, {
       method: "GET",
       headers: {
         token:`Bearer ${token}`,
@@ -42,7 +43,7 @@ export const createTask = (task) => async (dispatch) => {
 
     const token = localStorage.getItem("task-token");
 
-    await fetch("http://localhost:4300/api/task", {
+    await fetch(`${baseURL}/api/task`, {
       method: "POST",
       body: JSON.stringify(task),
       headers: {
@@ -65,7 +66,7 @@ export const updateTask = ({id,task}) => async (dispatch) => {
     
         const token = localStorage.getItem("task-token");
     
-        await fetch(`http://localhost:4300/api/task/${id}`, {
+        await fetch(`${baseURL}/api/task/${id}`, {
           method: "PUT",
           body: JSON.stringify(task),
           headers: {
@@ -88,7 +89,7 @@ export const deleteTask = ({id,task}) => async (dispatch) => {
     
         const token = localStorage.getItem("task-token");
     
-        await fetch(`http://localhost:4300/api/task/${id}`, {
+        await fetch(`${baseURL}/api/task/${id}`, {
           method: "DELETE",
           body: JSON.stringify(task),
           headers: {

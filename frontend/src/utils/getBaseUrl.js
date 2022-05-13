@@ -1,0 +1,1 @@
+export const baseURL = 'https://redcurpetup.vercel.app/';

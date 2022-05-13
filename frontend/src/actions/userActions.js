@@ -1,6 +1,6 @@
 import { LOAD_USER_FAIL,LOAD_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGOUT_USER_FAIL, LOGOUT_USER_REQUEST, LOGOUT_USER_SUCCESS, REGISTER_USER_FAIL, REGISTER_USER_REQUEST, REGISTER_USER_SUCCESS } from "../constants/userConstants"
 import { useNavigate } from "react-router-dom";
-
+import { baseURL } from "../utils/getBaseUrl";
 
 export const login = ({email, password},navigate) => async (dispatch) => {
 
@@ -8,7 +8,7 @@ export const login = ({email, password},navigate) => async (dispatch) => {
 
         dispatch({type:LOGIN_USER_REQUEST});
 
-        await fetch('http://localhost:4300/api/user/login',{
+        await fetch(`${baseURL}/api/user/login`,{
             method:'POST',
             body:JSON.stringify({email,password}),
             headers:{
@@ -31,7 +31,7 @@ export const register = ({username,email,password},navigate) => async (dispatch)
     try{
         dispatch({type:REGISTER_USER_REQUEST});
 
-        await fetch('http://localhost:4300/api/user/signup',{
+        await fetch(`${baseURL}/api/user/signup`,{
            method:'POST',
            body:JSON.stringify({username,email,password}),
            headers:{
@@ -53,7 +53,7 @@ export const loadUser = (navigate) => async (dispatch) => {
         const token = localStorage.getItem('task-token');
 
         if(token){
-            await fetch('http://localhost:4300/api/user/me',{
+            await fetch(`${baseURL}/api/user/me`,{
                 method:'GET',
                 headers:{
                     token:`Bearer ${token}`
