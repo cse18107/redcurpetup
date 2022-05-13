@@ -1,0 +1,300 @@
+.home_body{
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    position:relative;
+}
+p{
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 18px;
+    color: white;
+}
+.link{
+    text-decoration: underline;
+    color: white;
+}
+.home_add_button{
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(28,66,124);
+    color: white;
+    font-size: 3rem;
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.home_logout_button{
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: rgb(28,66,124);
+    color: white;
+ 
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.home_content{
+    margin-top: 20px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.home_content_item{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home_content_item_container{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    border: 1px solid rgb(28,66,124);
+    border-radius: 5px;
+    background-color: rgba(215, 231, 255, 0.164);
+    justify-content: center;
+    align-items: center;
+}
+.home_content_item_content{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.home_content_item_header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.check_box{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.check_box > img{
+    margin-top: 5px;
+    width: 75%;
+}
+.task_name{
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 18px;
+}
+.task_edit{
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 6px;
+    background-color: rgba(172, 255, 47, 0.387);
+    border-radius: 5px;
+}
+.task_delete{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    padding: 6px;
+    background-color: rgba(172, 255, 47, 0.387);
+    border-radius: 5px;
+}
+.home_content_item_description{
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700px;
+    font-style: normal;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.516);
+    height: 120px;
+    width: 100%;
+    overflow-y: scroll;
+}
+.home_content_item_description::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .home_content_item_description {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.home_content_item_date{
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    font-style: normal;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.882);
+    padding: 10px;
+    background-color: rgba(0, 128, 0, 0.107);
+    border-radius: 5px;
+}
+@media only screen and (max-width: 1332px){
+    .check_box{
+        width: 34px;
+        height: 34px;
+    }
+    .check_box > img {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 1300px){
+    .task_edit{
+        width: 30px;
+        height: 30px;
+    }
+    .task_delete{
+        width: 30px;
+        height: 30px;
+    }
+}
+@media only screen and (max-width: 1245px){
+    .task_edit{
+        margin-right: 15px;
+    }
+}
+@media only screen and (max-width: 1217px){
+    .task_edit{
+        margin-right: 10px;
+    }
+}
+@media only screen and (max-width: 1190px){
+    .home_content{
+        grid-template-columns: 33% 33% 33%;
+    }
+    .task_edit{
+        width: 35px;
+        height: 35px;
+    }
+    .task_delete{
+        width: 35px;
+        height: 35px;
+    }
+    .check_box{
+        width: 40px;
+        height: 40px;
+    }
+    .check_box > img {
+        width: 75%;
+    }
+}
+@media only screen and (max-width:968px){
+    .task_name{
+        font-size: 1rem;
+    }
+    .task_edit{
+        width: 30px;
+        height: 30px;
+    }
+    .task_delete{
+        width: 30px;
+        height: 30px;
+    }
+    .check_box{
+        width: 35px;
+        height: 35px;
+    }
+    .check_box > img {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 799px){
+    .home_content{
+        grid-template-columns: 50% 50%;
+    }
+    .task_name{
+        font-size: 1.3rem;
+    }
+    .task_edit{
+        width: 35px;
+        height: 35px;
+    }
+    .task_delete{
+        width: 35px;
+        height: 35px;
+    }
+    .check_box{
+        width: 40px;
+        height: 40px;
+    }
+    .check_box > img {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 639px){
+
+    .task_name{
+        font-size: 1.2rem;
+    }
+    .task_edit{
+        width: 30px;
+        height: 30px;
+    }
+    .task_delete{
+        width: 30px;
+        height: 30px;
+    }
+    .check_box{
+        width: 35px;
+        height: 35px;
+    }
+    .check_box > img {
+        width: 70%;
+    }
+}
+@media only screen and (max-width:574px){
+    .task_name{
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 528px){
+    .home_content{
+        grid-template-columns: 100%;
+    }
+    .task_name{
+        font-size: 1.3rem;
+    }
+    .task_edit{
+        width: 35px;
+        height: 35px;
+    }
+    .task_delete{
+        width: 35px;
+        height: 35px;
+    }
+    .check_box{
+        width: 40px;
+        height: 40px;
+    }
+    .check_box > img {
+        width: 75%;
+    }
+}
