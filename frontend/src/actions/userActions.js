@@ -26,7 +26,7 @@ export const login = ({email, password},navigate) => async (dispatch) => {
     }
 };
 
-export const register = ({username,email,password},navigate) => async (dispatch) =>{
+export const register = ({username,email,password},navigate,setIsLoading) => async (dispatch) =>{
     // const navigate = useNavigate();
     try{
         dispatch({type:REGISTER_USER_REQUEST});
@@ -40,6 +40,7 @@ export const register = ({username,email,password},navigate) => async (dispatch)
            }
         }).then((res)=>{return res.json();}).then((data)=>{
             dispatch({type:REGISTER_USER_SUCCESS});
+            setIsLoading(false);
             navigate('/login')
         });
 

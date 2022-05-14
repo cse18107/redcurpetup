@@ -7,7 +7,7 @@ import { login } from '../../actions/userActions';
 const Login = () => {
     const [email,setEmail] = useState("");
 
-    const {error} = useSelector(state => state.user);
+    const {error, isLoading} = useSelector(state => state.user);
 
     const [password,setPassword] = useState("");
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Login = () => {
             <div className='login_header'>Login</div>
             <input className='login_input_email input' onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
             <input className='login_input_password input' onChange={(e)=>setPassword(e.target.value)} placeholder='Password' type='password'/>
-            <button className='login_button' onClick={submitHandler}>Login</button>
+            <button className='login_button' disabled={isLoading && true} style={{cursor:`${isLoading?'no-drop':'pointer'}`}} onClick={submitHandler}>Login</button>
             {error && <p style={{color:"tomato"}}>please enter valid credentials</p>}
             <p>Don`t have an account? <Link to={'/signup'} className="link">Create account</Link></p>
         </div>

@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
 import './Signup.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [email,setEmail] = useState("");
+    const [isLoading,setIsLoading] = useState(false)
     const [valid,setValid] = useState(true);
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
@@ -39,7 +40,8 @@ const Signup = () => {
       }
       if(valid){
         console.log(valid)
-        dispatch(register({email,username,password},navigate));
+        setIsLoading(true)
+        dispatch(register({email,username,password},navigate,setIsLoading));
       }
     }
     
@@ -52,7 +54,7 @@ const Signup = () => {
             <input className='signup_input_email input' onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
             <input className='signup_input_password input' onChange={(e)=>setPassword(e.target.value)} placeholder='Password' type='password'/>
             {errormessage && <p style={{color:"tomato"}}>{errormessage}</p>}
-            <button className='signup_button' onClick={submitHandler}>Sign up</button>
+            <button className='signup_button' disabled={isLoading && true} style={{cursor:`${isLoading?'no-drop':'pointer'}`}} onClick={submitHandler}>Sign up</button>
             <p>Have an account? <Link to={'/login'} className="link">Login</Link></p>
         </div>
     </div>
