@@ -53,7 +53,7 @@ export const createTask = (task) => async (dispatch) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch({ type: CREATE_TASK_SUCCESS });
+        dispatch({ type: CREATE_TASK_SUCCESS, payload: data.message });
       });
   } catch (error) {
     dispatch({ type: CREATE_TASK_FAIL, payload: error.message });

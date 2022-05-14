@@ -99,7 +99,7 @@ p{
     align-items: center;
 }
 .check_box > img{
-    margin-top: 5px;
+    margin-top: 10px;
     width: 75%;
 }
 .task_name{

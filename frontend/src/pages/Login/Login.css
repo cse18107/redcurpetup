@@ -85,8 +85,12 @@
     }
 }
 @media only screen and (max-width:586px){
+    .login_content{
+        width: 90%;
+        height: 70%;
+    }
     .login_content > input{
-        width: 80%;
+        width: 88%;
     }
     .login_button{
         width: 30%;

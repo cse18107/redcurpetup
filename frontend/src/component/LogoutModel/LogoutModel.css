@@ -1,0 +1,56 @@
+.logoutmodel_body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoutmodel_content{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 18px;
+    color: rgb(28,66,124);
+}
+.logout_buttons{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logout_buttons > button {
+    width: 40%;
+    height: 100%;
+    font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 18px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.logout_buttons > button:nth-child(1){
+    background-color: rgba(115, 255, 115, 0.553);
+    color: green;
+}
+.logout_buttons > button:nth-child(2){
+    background-color: rgba(255, 115, 115, 0.553);
+    color: rgb(128, 0, 0);
+}
+@media only screen and (max-width:500px){
+    .logoutmodel_content{
+        font-size: 1.6rem;
+    }
+}

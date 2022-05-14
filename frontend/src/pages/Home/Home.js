@@ -5,6 +5,7 @@ import Edit from "../../image/pencil.png";
 import Overlay from "../../component/Overlay/Overlay.js";
 import CreateTask from "../../component/CreateTask/CreateTask.js";
 import UpdateTask from "../../component/UpdateTask/UpdateTask.js";
+import LogoutModel from "../../component/LogoutModel/LogoutModel.js";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTask, updateTask } from "../../actions/taskActions";
 import Logout from "../../image/logout.png";
@@ -17,7 +18,7 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [create, setCreate] = useState(0);
   const [editTask, setEditTask] = useState({});
-  const [checked,setChecked] = useState(false);
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
   const { task, isLoading } = useSelector((state) => state.task);
   console.log(task?.tasks);
@@ -36,20 +37,32 @@ const Home = () => {
   };
 
   const checkHandler = (id) => {
-    setChecked(true)
-    dispatch(updateTask({id,task:{complete:true}}));
-  }
+    setChecked(true);
+    dispatch(updateTask({ id, task: { complete: true } }));
+  };
 
   const Loading = () => {
     return (
-      <h1 style={{fontFamily:`"Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif`}}>Loading...</h1>
+      <h1
+        style={{
+          fontFamily: `"Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif`,
+        }}
+      >
+        Loading...
+      </h1>
     );
-  }
+  };
 
   return (
     <>
       <div className="home_body">
-        <button className="home_logout_button" onClick={logoutHandler}>
+        <button
+          className="home_logout_button"
+          onClick={() => {
+            setShow(!show);
+            setCreate(3);
+          }}
+        >
           <img src={Logout} alt="logout" style={{ width: "30px" }} />
         </button>
         <button
@@ -62,7 +75,10 @@ const Home = () => {
           +
         </button>
         <div className="home_content">
-          {isLoading?<Loading/>:task &&
+          {isLoading ? (
+            <Loading />
+          ) : (
+            task &&
             task?.tasks?.map((task) => {
               return (
                 <div className="home_content_item">
@@ -81,11 +97,11 @@ const Home = () => {
                               task.complete
                                 ? "rgba(134, 255, 94, 0.096)"
                                 : "rgba(255, 94, 94, 0.096)"
-                            }`
+                            }`,
                           }}
-                          onClick={()=>checkHandler(task._id)}
+                          onClick={() => checkHandler(task._id)}
                         >
-                         {task.complete && <img src={Check} alt="check" />}
+                          {task.complete && <img src={Check} alt="check" />}
                         </div>
                         <div className="task_name">
                           {task.task.length > 8
@@ -107,19 +123,24 @@ const Home = () => {
                             src={Delete}
                             alt="delete"
                             className="task_delete"
-                            onClick={()=>dispatch(deleteTask({id:task._id}))}
+                            onClick={() =>
+                              dispatch(deleteTask({ id: task._id }))
+                            }
                           />
                         </div>
                       </div>
                       <div className="home_content_item_description">
                         {task.description}
                       </div>
-                      <div className="home_content_item_date">{new Date(task.date).toDateString()}</div>
+                      <div className="home_content_item_date">
+                        {new Date(task.date).toDateString()}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
-            })}
+            })
+          )}
         </div>
         {show && (
           <Overlay setShow={setShow} show={show}>
@@ -127,6 +148,7 @@ const Home = () => {
             {create === 2 && (
               <UpdateTask task={editTask} setShow={setShow} show={show} />
             )}
+            {create === 3 && <LogoutModel logoutHandler={logoutHandler} setShow={setShow} show={show} />}
           </Overlay>
         )}
       </div>

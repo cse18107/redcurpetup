@@ -16,18 +16,14 @@ const getTasks = async (req,res,next) => {
         res.status(200).json({
             result:"success",
             message:{
+                userId:decode.id,
                 tasks
             }
         })
 
 
     }catch(error) {
-        // res.status(400).json({
-        //     result:"error",
-        //     message:{
-        //         error:error.message
-        //     }
-        // })
+
         return next(new ErrorHandler(error.message));
     }
 };
@@ -45,16 +41,17 @@ const createTask = async (req,res,next) => {
         task.userId = decode.id;
 
         await task.save(); 
+
+        const tasks = await Task.find({userId: decode.id});
+
         res.status(200).json({
-            result:'success'
+            result:'success',
+            message:{
+                tasks
+            }
         })
     }catch(error) {
-        // res.status(400).json({
-        //     result:"error",
-        //     message:{
-        //         error:error.message
-        //     }
-        // })
+
         return next(new ErrorHandler(error.message));
     }
 };
@@ -73,12 +70,7 @@ const getTask = async (req,res,next) => {
         })
 
     }catch(error) {
-        // res.status(400).json({
-        //     result:"error",
-        //     message:{
-        //         error:error.message
-        //     }
-        // })
+
         return next(new ErrorHandler(error.message));
     }
 };
@@ -93,7 +85,11 @@ const updateTasks = async (req,res,next) => {
 
         const task = await Task.findByIdAndUpdate(id,uptask);
 
-        const tasks = await Task.find();
+        const token = req.headers.token.split(' ')[1];
+
+        const decode = jwt.verify(token,process.env.JWT_TOKEN);
+
+        const tasks = await Task.find({userId: decode.id});
 
         res.status(200).json({
             result:"success",
@@ -102,12 +98,7 @@ const updateTasks = async (req,res,next) => {
             }
         })
     }catch(error) {
-        // res.status(400).json({
-        //     result:"error",
-        //     message:{
-        //         error:error.message
-        //     }
-        // })
+
         return next(new ErrorHandler(error.message));
     }
 };
@@ -117,7 +108,11 @@ const deleteTasks = async (req,res,next) => {
 
         const task = await Task.findByIdAndDelete(id);
 
-        const tasks = await Task.find();
+        const token = req.headers.token.split(' ')[1];
+
+        const decode = jwt.verify(token,process.env.JWT_TOKEN);
+
+        const tasks = await Task.find({userId: decode.id});
 
         res.status(200).json({
             result:"success",
@@ -126,12 +121,7 @@ const deleteTasks = async (req,res,next) => {
             }
         })
     }catch(error) {
-        // res.status(400).json({
-        //     result:"error",
-        //     message:{
-        //         error:error.message
-        //     }
-        // })
+
         return next(new ErrorHandler(error.message));
     }
 };

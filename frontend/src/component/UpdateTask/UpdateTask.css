@@ -24,7 +24,7 @@
 }
 .update_task_heading{
     font-family: "Proxima Nova Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-weight: 400;
     font-style: normal;
     line-height: 18px;
@@ -131,4 +131,14 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
+  }
+  @media only screen and (max-width: 843px) {
+    .update_task_heading {
+      font-size: 1.5rem;
+    }
+  }
+  @media only screen and (max-height: 518px) {
+    .description_input {
+      height: 50px;
+    }
   }

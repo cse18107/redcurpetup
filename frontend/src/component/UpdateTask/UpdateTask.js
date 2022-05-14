@@ -14,9 +14,7 @@ const UpdateTask = (props) => {
     console.log(props.task)
 
     const submitHandler = () => {
-        dispatch(updateTask({id:props.task._id,task:{task:name,description,date}})).then(()=>{
-            dispatch(loadTask());
-        });
+        dispatch(updateTask({id:props.task._id,task:{task:name,description,date}}));
         props.setShow(!show)
     }
 
